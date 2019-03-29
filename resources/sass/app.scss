@@ -1,0 +1,27 @@
+
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+
+// Variables
+@import "variables";
+
+// Mixins
+@import "mixins";
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// Loaders
+@import '~pure-css-loader/dist/css-loader';
+
+//font-awesome 4.7
+//@import './font-awesome/font-awesome';
+
+// layout PBH 
+@import 'fonts-pbh';
+@import 'layout-pbh';
+@import 'layout-sistema';
+
+
+@import "~font-awesome/scss/font-awesome";
+// @import '~metismenu/dist/metisMenu';

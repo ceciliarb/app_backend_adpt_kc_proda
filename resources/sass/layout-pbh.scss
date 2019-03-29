@@ -1,0 +1,228 @@
+#app {
+    min-height: 100vh;
+}
+#app>div {
+    flex: 1;
+}
+
+.navbar.topo {
+    >div {
+        min-height: $nav-height;
+    }
+    .nav-link {
+        line-height: $nav-height;
+        padding: 0 .8rem;
+    }
+    .dropdown.show .nav-link, .nav-link:hover {
+        background-color: $gray-200;
+    }
+    .dropdown-menu {
+        border-radius: 0 0 .25rem .25rem;
+        margin: 0;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.15), 0 1px 5px rgba(0,0,0,0.075);
+    }
+    .navbar-brand .logo {
+        width: 165px;
+        display: inline-block;
+    }
+    .navbar-brand .divisoria {
+        padding-top: 12px;
+        line-height: 33px;
+        color: #555555;
+        font-size: 14px;
+    }
+    .navbar-brand .sigla {
+        display: inline-block;
+        font-size: 33px;
+        line-height: 33px;
+        color: #646455;
+        padding-top: 12px;
+        letter-spacing: 5px;
+    }
+}
+.nav-link.active {
+    background-color: $gray-200;
+}
+
+.conteudo {
+    padding-bottom: 50px;
+    padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.footer {
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.075);
+}
+.footer .row {
+    min-height: $nav-height;
+}
+
+//Cards (por enquanto as definições estão sobrepondo o card original)
+.card.simples {
+    box-shadow: 0 0 10px rgba(0,0,0,0.075);
+    margin-bottom: 2.5rem;
+    border-radius: 0;
+    .card-header, .card-footer {
+        border: 0;
+        border-radius: 0;
+    }
+}
+
+//seções indentadas
+.secao .secao {
+    margin: 0 1.5rem 0 1.5rem;
+}
+
+//ocupar a altura/largura total dentro de um container flex
+.flex-1 {
+    flex: 1;
+}
+
+//definições de título e subtítulo (h1 a h6) .title
+@for $i from 1 through 6 {
+    h#{$i}.title {
+        font-size: #{(2 - $i*.2)}rem;
+        margin: #{(3 - $i*.3)}rem 0 #{(1.5 - $i*.15)}rem;
+    }
+    h#{$i}.title:first-child {
+        margin-top: #{(1.5 - $i*.15)}rem;
+    }
+}
+
+// loader
+.loader.is-active {
+  background-color: rgba(255, 255, 255, 0.85);
+     width: 0%; 
+     height: 0%;
+     z-index:1051
+}
+.loader {
+  color: gray;
+}
+.loader-default:after {
+  content: "";
+  position: fixed;
+  width: 48px;
+  height: 48px;
+  border: 8px solid #337ab7;
+  border-left-color: transparent;
+  border-radius: 50%;
+  top: calc(90% - 24px);
+  left: calc(90% - 24px);
+  -webkit-animation: rotation 1s linear infinite;
+  animation: rotation 1s linear infinite;
+}
+
+//Ajuste das classes de contexto para dialogs
+$light: map-get($theme-colors, 'light');
+@each $cor in ('primary', 'info', 'danger', 'success', 'warning') {
+    $theme-color: map-get($theme-colors, $cor);
+    .modal-header.bg-#{$cor}, .modal-footer.bg-#{$cor}, .alert-#{$cor} {
+        background-color: $theme-color !important;
+        color: $light !important;
+        border-color: $theme-color;
+    }
+    .modal-header.bg-#{$cor} .close, .modal-header.bg-#{$cor} .close:hover, .modal-header.bg-#{$cor} .close:focus {
+        color: $light !important;
+    }
+    .toast-panel .alert-#{$cor} {
+        color: $light;
+        background-color: $theme-color;
+        border: none;
+    }
+}
+
+.modal-header .close {
+    display:none;
+  }
+  
+.modal-content {
+    border: 0;
+}
+.modal-footer {
+    border-radius: 0 .3rem .3rem;
+}
+/*Ajuste para evitar que o topo e o rodapé se desloquem ao abrir modal*/
+.modal-open .navbar, .modal-open .footer {
+    margin-right: -17px !important;
+    padding-right: 17px !important;
+}
+.alert-dismissible .close {
+    padding: .25rem 1rem;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+//O marcador de campos "required" aparece dependendo do estado da validação
+.marca-required {
+    display: none;
+}
+.requerido .marca-required, .is-invalid .marca-required, .requerido-parcial.invalido .marca-required {
+    display: inline-block;
+}
+
+//Campos checkbox e radio não devem ser destacados com as cores de 'success' quando tiverem sido validados
+.was-validated .custom-control-input:valid ~ .custom-control-label, .custom-control-input.is-valid ~ .custom-control-label {
+    color: inherit;
+}
+.was-validated .custom-control-input:valid ~ .custom-control-label::before, .custom-control-input.is-valid ~ .custom-control-label::before {
+    background-color: $gray-200;
+}
+
+//formata a row para que possa ser utilizada para dividir o espaço reservado aos controles de um form-group
+.form-row {
+    margin-right: 0;
+    margin-left: 0;
+    >.col, >[class*="col-"] {
+        padding: .5em 0 0 0;
+    }
+    >.col, >.col-1, >.col-2, >.col-3, >.col-4, >.col-5, >.col-6, >.col-7, >.col-8, >.col-9, >.col-10, >.col-11 {
+        padding-left: .5rem;
+    }
+    >.col:first-child, >[class*="col-"]:first-child {
+        padding-left: 0;
+    }
+}
+
+//Muda o texto padrão do botão dos campos "file" do botstrap-vue
+.custom-file-input:lang(pt-BR)~.custom-file-label::after {
+    content: "Procurar arquivo";
+}
+
+//clarear placeholder dos controles de formulário
+@include setPlaceholder('.form-control', $gray-500);
+
+@include media-breakpoint-up(sm) {
+    //alinha label do bootstrap-vue à direita quando estiver dentro de card
+    .card .col-form-label[class*="col-sm"] {
+        text-align: right;
+    }
+    .form-row .col, .form-row [class*="col-"] {
+        padding-left: .5rem;
+        padding-top: 0;
+    }
+}
+
+.painelFooter{
+    z-index:1030; 
+    bottom: 0px; 
+    left:0px; 
+    width:100%; 
+    position: fixed;
+    font-size: 12px;
+    height:150px;
+}
+
+.painelFooter .list-group-item {
+    padding: 0.13rem 1rem;
+}
+
+.painelFooter .item-footer{
+    padding: 0.13rem 3rem;
+}
+
+.painelFooter .card{
+    height:160px;
+    overflow:auto
+}

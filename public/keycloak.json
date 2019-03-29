@@ -1,0 +1,14 @@
+{
+  "realm": "GFSS-PB",
+  "auth-server-url": "http://keycloak.qa.pbh/auth",
+  "ssl-required": "none",
+  "resource": "succ",
+  "verify-token-audience": true,
+  "credentials": {
+    "secret": "cab6f46e-7530-4cf6-bb68-5f8faf7b63bd"
+  },
+  "use-resource-role-mappings": true,
+  "confidential-port": 0,
+  "policy-enforcer": {}
+
+}
